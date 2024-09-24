@@ -16,7 +16,7 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 from django.http import HttpResponse
 
 def ola_django(request):
@@ -24,5 +24,6 @@ def ola_django(request):
     
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('ola_django/', ola_django)
+    path('ola_django/', ola_django),
+    path('primeiro_app/', include ('primeiro_app.urls')),
 ]

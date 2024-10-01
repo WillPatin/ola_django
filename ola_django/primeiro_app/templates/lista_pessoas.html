@@ -2,14 +2,45 @@
 <html>
   <head>
     <title>Lista de Pessoas</title>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid black;
+      }
+      th,
+      td {
+        padding: 8px;
+        text-align: left;
+      }
+    </style>
   </head>
   <body>
     <h1>Pessoas Cadastradas</h1>
 
-    <ul>
-      {% for pessoa in object_list %}
-      <li>{{ pessoa.nome }} - {{ pessoa.idade }} anos - {{ pessoa.email }}</li>
-      {% endfor %}
-    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Idade</th>
+          <th>Email</th>
+          <th>Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for pessoa in object_list %}
+        <tr>
+          <td>{{ pessoa.nome }}</td>
+          <td>{{ pessoa.idade }}</td>
+          <td>{{ pessoa.email }}</td>
+          <td><a href="{% url 'editar_pessoa' pessoa.pk %}">Editar</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
   </body>
 </html>

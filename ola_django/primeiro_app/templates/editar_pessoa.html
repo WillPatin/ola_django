@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editar Pessoa</title>
+  </head>
+  <body>
+    <h2>Editar pessoa</h2>
+
+    <form method="post">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Salvar alterações</button>
+    </form>
+
+    <!-- Aqui você especifica o nome da URL correta -->
+    <a href="{% url 'lista_pessoas' %}" class="btn btn-secondary">Voltar</a>
+  </body>
+</html>

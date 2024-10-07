@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detalhe da Pessoa</title>
+    <style>
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+      }
+      .container h1 {
+        text-align: center;
+      }
+      .details {
+        margin-bottom: 10px;
+      }
+      .btn {
+        display: inline-block;
+        padding: 10px 15px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 4px;
+        text-align: center;
+      }
+      .btn-secondary {
+        background-color: #6c757d;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Detalhe da Pessoa</h1>
+
+      <div class="details"><strong>Nome:</strong> {{ pessoa.nome }}</div>
+      <div class="details"><strong>Idade:</strong> {{ pessoa.idade }} anos</div>
+      <div class="details"><strong>Email:</strong> {{ pessoa.email }}</div>
+
+      <!-- Botões para editar ou voltar -->
+      <div class="actions">
+        <a href="{% url 'editar_pessoa' pessoa.pk %}" class="btn">Editar</a>
+        <a href="{% url 'lista_pessoas' %}" class="btn btn-secondary"
+          >Voltar para a lista</a
+        >
+      </div>
+    </div>
+  </body>
+</html>

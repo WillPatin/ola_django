@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deletar Pessoa</title>
+    <style>
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        text-align: center;
+      }
+      .btn {
+        display: inline-block;
+        padding: 10px 15px;
+        margin: 5px;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 4px;
+      }
+      .btn-primary {
+        background-color: #007bff;
+      }
+      .btn-secondary {
+        background-color: #6c757d;
+      }
+      .btn-danger {
+        background-color: #dc3545;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Deletar Pessoa</h2>
+      <p>
+        Tem certeza de que deseja deletar <strong>{{ object.nome }}</strong>?
+      </p>
+
+      <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Deletar Pessoa</button>
+      </form>
+      <a href="{% url 'lista_pessoas' %}" class="btn btn-secondary">Voltar</a>
+    </div>
+  </body>
+</html>

@@ -10,3 +10,8 @@ class PessoaUpdateForm(forms.ModelForm):
     class Meta:
         model = Pessoa
         fields = '__all__'
+        
+class PessoaDeleteForm(forms.ModelForm):
+    class Meta:
+        model = Pessoa
+        fields = []

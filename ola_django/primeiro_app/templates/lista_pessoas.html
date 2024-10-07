@@ -17,6 +17,22 @@
         padding: 8px;
         text-align: left;
       }
+      .btn {
+        text-decoration: none;
+        padding: 5px 10px;
+        margin: 2px;
+        border-radius: 4px;
+        color: white;
+      }
+      .btn-primary {
+        background-color: #007bff;
+      }
+      .btn-secondary {
+        background-color: #6c757d;
+      }
+      .btn-danger {
+        background-color: #dc3545;
+      }
     </style>
   </head>
   <body>
@@ -28,7 +44,7 @@
           <th>Nome</th>
           <th>Idade</th>
           <th>Email</th>
-          <th>Ação</th>
+          <th>Ações</th>
         </tr>
       </thead>
       <tbody>
@@ -37,7 +53,23 @@
           <td>{{ pessoa.nome }}</td>
           <td>{{ pessoa.idade }}</td>
           <td>{{ pessoa.email }}</td>
-          <td><a href="{% url 'editar_pessoa' pessoa.pk %}">Editar</a></td>
+          <td>
+            <a
+              href="{% url 'editar_pessoa' pessoa.id %}"
+              class="btn btn-primary"
+              >Editar</a
+            >
+            <a
+              href="{% url 'detalhe_pessoa' pessoa.id %}"
+              class="btn btn-secondary"
+              >Visualizar</a
+            >
+            <a
+              href="{% url 'deletar_pessoa' pessoa.id %}"
+              class="btn btn-danger"
+              >Deletar</a
+            >
+          </td>
         </tr>
         {% endfor %}
       </tbody>

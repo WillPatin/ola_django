@@ -1,53 +1,51 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Detalhe da Pessoa</title>
-    <style>
-      .container {
-        max-width: 600px;
-        margin: 0 auto;
-        padding: 20px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        background-color: #f9f9f9;
-      }
-      .container h1 {
-        text-align: center;
-      }
-      .details {
-        margin-bottom: 10px;
-      }
-      .btn {
-        display: inline-block;
-        padding: 10px 15px;
-        background-color: #007bff;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 4px;
-        text-align: center;
-      }
-      .btn-secondary {
-        background-color: #6c757d;
-      }
-    </style>
+    <title>Detalhes da Pessoa</title>
   </head>
   <body>
-    <div class="container">
-      <h1>Detalhe da Pessoa</h1>
+    <h1>Detalhes da Pessoa</h1>
 
-      <div class="details"><strong>Nome:</strong> {{ pessoa.nome }}</div>
-      <div class="details"><strong>Idade:</strong> {{ pessoa.idade }} anos</div>
-      <div class="details"><strong>Email:</strong> {{ pessoa.email }}</div>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Nome:</strong></td>
+          <td>{{ object.nome }}</td>
+        </tr>
+        <tr>
+          <td><strong>Idade:</strong></td>
+          <td>{{ object.idade }}</td>
+        </tr>
+        <tr>
+          <td><strong>Email:</strong></td>
+          <td>{{ object.email }}</td>
+        </tr>
+        <tr>
+          <td><strong>Tipo Pessoa:</strong></td>
+          <td>{{ object.tipo_pessoa }}</td>
+        </tr>
+      </tbody>
+    </table>
 
-      <!-- Botões para editar ou voltar -->
-      <div class="actions">
-        <a href="{% url 'editar_pessoa' pessoa.pk %}" class="btn">Editar</a>
-        <a href="{% url 'lista_pessoas' %}" class="btn btn-secondary"
-          >Voltar para a lista</a
-        >
-      </div>
-    </div>
+    <h2>Histórico de Interações</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Data e Hora</th>
+          <th>Mensagem</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for interacao in interacoes_formatada %}
+        <tr>
+          <td>{{ interacao.data_hora }}</td>
+          <td>{{ interacao.mensagem }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <a href="{% url 'editar_pessoa' object.id %}">Editar</a>
+    <a href="{% url 'lista_pessoas' %}">Voltar para a lista</a>
   </body>
 </html>
